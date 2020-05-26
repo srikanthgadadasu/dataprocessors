@@ -1,15 +1,34 @@
-package csvtodf
+package functions
 
 import(
 	"encoding/csv"
 	"fmt"
 	"os"
-	"github.com/srikanthgadadasu/nadi/src/readcsv/schemas/ipschemas"
+	"time"
+	"strconv"
 )
 
-func csvtodataframe(Ipfile, Iptype){
+type iptype struct{
+	Course_id int
+	Course_title string
+	Url	string
+	Is_paid	bool
+	Price float64
+	Num_subscribers int	
+	Num_reviews	int
+	Num_lectures int
+	Level string
+	Content_duration float64	
+	Published_timestamp time.Time
+	Subject string
+}
+
+//Csvtodataframe function converts csv data into data frame format using the schema
+func Csvtodataframe(){
 	
-	csvfile, err := os.Open(Ipfile)
+	ipfile := "/udemy_courses.csv"
+
+	csvfile, err := os.Open(ipfile)
 	checkerror(err)
 	defer csvfile.Close()
 
@@ -17,22 +36,31 @@ func csvtodataframe(Ipfile, Iptype){
 	rawdata, err := data.ReadAll()
 	checkerror(err)
 
-	var line Iptype
-	var lines []Iptype
+	var line iptype
+	var lines []iptype
+	layout := "2006-01-02T15:04:05.000Z"
 
 	for _, record := range rawdata {
-		line.course_id = record[0]
-		line.course_title = record[1]
-		line.url = record[2]
-		line.is_paid = record[3]
-		line.price = record[4]
-		line.num_subscribers = record[5]
-		line.num_reviews = record[6]
-		line.num_lectures = record[7]
-		line.level = record[8]
-		line.content_duration = record[9]
-		line.published_timestamp = record[10]
-		line.subject = record[11]
+		line.Course_id, err = strconv.Atoi(record[0])
+		checkerror(err)
+		line.Course_title = record[1]
+		line.Url = record[2]
+		line.Is_paid, err = strconv.ParseBool(record[3])
+		checkerror(err)
+		line.Price, err = strconv.ParseFloat(record[4], 64)
+		checkerror(err)
+		line.Num_subscribers, err = strconv.Atoi(record[5])
+		checkerror(err)
+		line.Num_reviews, err = strconv.Atoi(record[6])
+		checkerror(err)
+		line.Num_lectures, err = strconv.Atoi(record[7])
+		checkerror(err)
+		line.Level = record[8]
+		line.Content_duration, err = strconv.ParseFloat(record[9], 64)
+		checkerror(err)
+		line.Published_timestamp, err = time.Parse(layout, record[10])
+		checkerror(err)
+		line.Subject = record[11]
 
 		lines = append(lines, line)
 	}
