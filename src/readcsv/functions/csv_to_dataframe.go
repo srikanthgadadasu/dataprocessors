@@ -4,7 +4,7 @@ import(
 	"encoding/csv"
 	"fmt"
 	"os"
-	"vars/vars"
+	"readcsv/vars/vars"
 )
 
 func Csvtodataframe(Ipfile, Iptype){
