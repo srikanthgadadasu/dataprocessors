@@ -2,7 +2,7 @@ package main
 
 import(
 	"time"
-	"utilities/csvtodf"
+	"./utilities"
 )
 
 // Schema of the input csv file.  This needs to be a parameter and comes from data pipeline

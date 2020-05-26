@@ -7,6 +7,7 @@ import(
 )
 
 func CsvToDataframe(ipfile string, iptype struct){
+	
 	csvfile, err := os.Open(ipfile)
 	Checkerror(err error)
 	defer csvfile.Close()
@@ -35,4 +36,11 @@ func CsvToDataframe(ipfile string, iptype struct){
 		lines = append(lines, line)
 	}
 	fmt.Println(lines)
+}
+
+func Checkerror(err error){
+	if err != nil{
+		fmt.Println("Error: ",err)
+		os.Exit(1)
+	}
 }
