@@ -4,12 +4,14 @@ import(
 	"encoding/csv"
 	"fmt"
 	"os"
+	"io"
 	"time"
 	"strconv"
+	"bufio"
 )
 
 type iptype struct{
-	Course_id int
+	Course_id string
 	Course_title string
 	Url	string
 	Is_paid	bool
@@ -26,23 +28,29 @@ type iptype struct{
 //Csvtodataframe function converts csv data into data frame format using the schema
 func Csvtodataframe(){
 	
-	ipfile := "/udemy_courses.csv"
+	ipfile := "/Users/sripri/Documents/nadi/udemy_courses.csv"
 
 	csvfile, err := os.Open(ipfile)
 	checkerror(err)
 	defer csvfile.Close()
-
+	
+	// Skip first row (line)
+    row1, err := bufio.NewReader(csvfile).ReadSlice('\n')
+    checkerror(err)
+	_, err = csvfile.Seek(int64(len(row1)), io.SeekStart)
+	checkerror(err)
+	
+	//read remaining lines
 	data := csv.NewReader(csvfile)
 	rawdata, err := data.ReadAll()
 	checkerror(err)
 
 	var line iptype
 	var lines []iptype
-	layout := "2006-01-02T15:04:05.000Z"
+	layout := time.RFC3339
 
 	for _, record := range rawdata {
-		line.Course_id, err = strconv.Atoi(record[0])
-		checkerror(err)
+		line.Course_id = record[0]
 		line.Course_title = record[1]
 		line.Url = record[2]
 		line.Is_paid, err = strconv.ParseBool(record[3])
@@ -64,7 +72,9 @@ func Csvtodataframe(){
 
 		lines = append(lines, line)
 	}
-	fmt.Println(lines)
+	fmt.Println(lines[0])
+
+	//{1070968 Ultimate Investment Banking Course https://www.udemy.com/ultimate-investment-banking-course/ true 200 2147 23 51 All Levels 1.5 2017-01-18 20:58:58 +0000 UTC Business Finance}
 }
 
 func checkerror(err error){
