@@ -4,10 +4,10 @@ import(
 	"encoding/csv"
 	"fmt"
 	"os"
-	"vars/vars"
+	"github.com/srikanthgadadasu/nadi/src/readcsv/schemas/ipschemas"
 )
 
-func Csvtodataframe(Ipfile, Iptype){
+func csvtodataframe(Ipfile, Iptype){
 	
 	csvfile, err := os.Open(Ipfile)
 	checkerror(err)

@@ -2,14 +2,15 @@ package main
 
 import(
 	"time"
-	"readcsv/functions/csvtodf"
-	"readcsv/vars/vars"
+	"github.com/srikanthgadadasu/nadi/src/readcsv/functions/csvtodf"
+	"github.com/srikanthgadadasu/nadi/src/readcsv/schemas/ipschemas"
 )
 
 // Read the input csv file and converts to dataframe using the above schema
 
 func main(){
-	csvtodf.Csvtodataframe(Ipfile, Iptype)
+	Ipfile := "/udemy_courses.csv"
+	csvtodf.csvtodataframe(Ipfile, ipschemas.Iptype)
 }
 
 
