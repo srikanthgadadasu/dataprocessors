@@ -6,20 +6,20 @@ import(
 	"os"
 )
 
-func CsvToDataframe(ipfile string, iptype struct){
+func Csvtodataframe(Ipfile, Iptype){
 	
-	csvfile, err := os.Open(ipfile)
-	Checkerror(err error)
+	csvfile, err := os.Open(Ipfile)
+	checkerror(err)
 	defer csvfile.Close()
 
 	data := csv.NewReader(csvfile)
 	rawdata, err := data.ReadAll()
-	Checkerror(err error)
+	checkerror(err)
 
-	var line iptype
-	var lines []iptype
+	var line Iptype
+	var lines []Iptype
 
-	for _, record := range raw_data {
+	for _, record := range rawdata {
 		line.course_id = record[0]
 		line.course_title = record[1]
 		line.url = record[2]
@@ -38,7 +38,7 @@ func CsvToDataframe(ipfile string, iptype struct){
 	fmt.Println(lines)
 }
 
-func Checkerror(err error){
+func checkerror(err error){
 	if err != nil{
 		fmt.Println("Error: ",err)
 		os.Exit(1)

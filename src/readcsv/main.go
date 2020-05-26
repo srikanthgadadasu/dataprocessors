@@ -7,7 +7,7 @@ import(
 
 // Schema of the input csv file.  This needs to be a parameter and comes from data pipeline
 
-type iptype struct{
+type Iptype struct{
 	course_id int
 	course_title string
 	url	string
@@ -25,9 +25,9 @@ type iptype struct{
 // Read the input csv file and converts to dataframe using the above schema
 
 func main(){
-	ipfile := "/Users/sripri/Downloads/udemy_courses.csv"
+	Ipfile := "/udemy_courses.csv"
 
-	csvtodf.CsvToDataframe(ipfile, iptype)
+	csvtodf.Csvtodataframe(Ipfile, Iptype)
 }
 
 
