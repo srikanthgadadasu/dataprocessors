@@ -4,13 +4,10 @@
 package readjson
 
 import(
-   "fmt"
-   "os"
+	"fmt"
 )
-
 //It has to read the JSON file and returns rows array
 
-func jsonRead{
-
-
+func jsonRead(){
+	fmt.Println("Returns Worker Queue")
 }

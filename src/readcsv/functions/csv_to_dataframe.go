@@ -31,7 +31,7 @@ type iptype struct{
 //Csvtodataframe function converts csv data into data frame format using the schema
 func Csvtodataframe(){
 	
-	ipfile := "/Users/sripri/Documents/nadi/udemy_courses.csv"
+	ipfile := "/Users/sriyan/Documents/nadi/udemy_courses.csv"
 
 	csvfile, err := os.Open(ipfile)
 	checkerror(err)
