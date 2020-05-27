@@ -1,9 +1,9 @@
 package main
 
 import(
-	"github.com/srikanthgadadasu/nadi/src/readcsv/csvread"
+	"github.com/srikanthgadadasu/nadi/src/readcsv/readcsv"
 )
 
 func main(){
-	csvread.Readcsv()
+	readcsv.Readcsv()
 }
