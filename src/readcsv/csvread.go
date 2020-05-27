@@ -7,7 +7,7 @@ import(
 	"github.com/srikanthgadadasu/nadi/src/readcsv/functions"
 )
 
-// Readcsv read the input csv file and converts to dataframe using schema
-func Readcsv(){
+//Readcsvfile read the input csv file and converts to dataframe using schema
+func Readcsvfile(){
 	functions.Csvtodataframe()
 }
