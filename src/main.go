@@ -6,7 +6,7 @@ import(
 )
 
 func main(){
-	Ipfile := "/Users/sriyan/Documents/nadi/udemy_courses.csv"
+	Ipfile := "github.com/srikanthgadadasu/nadi/blob/master/udemy_courses.csv"
 	rows := readcsv.Csvtodataframe(Ipfile)
 	fmt.Println(rows[0]) //sample record
 	fmt.Println(rows[0].Course_title)
