@@ -1,4 +1,4 @@
-# Nadi
+# Nadi Data
 
 Future proof data processing
 
@@ -6,7 +6,7 @@ Future proof data processing
 
 New files that you contribute should use the standard copyright header:
 
-// Copyright 2020 The Nadi Authors. All rights reserved.
+// Copyright 2020 The Nadi Data Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
