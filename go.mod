@@ -1,3 +1,3 @@
-module github.com/srikanthgadadasu/nadi
+module github.com/nadidata/dataprocessors
 
 go 1.14
