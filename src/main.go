@@ -6,7 +6,7 @@ package main
 
 import(
 	"fmt"
-	"github.com/nadidata/DataProcessors/src/readcsv"
+	"github.com/nadidata/dataprocessors/src/readcsv"
 )
 
 func main(){
